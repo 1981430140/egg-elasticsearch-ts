@@ -22,6 +22,7 @@
   "keywords": [
     "egg",
     "es",
+    "egg-es",
     "elasticsearch",
     "egg-elasticsearch",
     "egg-elasticsearch-ts",

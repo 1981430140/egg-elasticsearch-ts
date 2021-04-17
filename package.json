@@ -1,0 +1,48 @@
+{
+  "name": "egg-elasticsearch-ts",
+  "version": "1.0.0",
+  "description": "Egg.js 基于 @elastic/elasticsearch 的 elasticsearch 插件",
+  "author": "dq",
+  "types": "index.d.ts",
+  "egg": {},
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.12.0",
+    "dotenv": "^8.2.0",
+    "egg": "^2"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.13.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "test": "egg-bin test"
+  },
+  "keywords": [
+    "egg",
+    "es",
+    "elasticsearch",
+    "egg-elasticsearch",
+    "egg-elasticsearch-ts",
+    "egg-plugin"
+  ],
+  "files": [
+    "app.js",
+    "config",
+    "index.d.ts",
+    "app"
+  ],
+  "eslintIgnore": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1981430140/egg-elasticsearch-ts"
+  },
+  "bugs": {
+    "url": "https://github.com/1981430140/egg-elasticsearch-ts/issues"
+  },
+  "homepage": "https://github.com/1981430140/egg-elasticsearch-ts#readme",
+  "license": "ISC"
+}

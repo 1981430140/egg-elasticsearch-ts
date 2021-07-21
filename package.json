@@ -1,6 +1,6 @@
 {
   "name": "egg-elasticsearch-ts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Egg.js 基于 @elastic/elasticsearch 的 elasticsearch 插件",
   "author": "dq",
   "types": "index.d.ts",

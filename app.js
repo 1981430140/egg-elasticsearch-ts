@@ -18,13 +18,34 @@ class AppBootHook {
 
   configDidLoad() {
     // Config, plugin files have been loaded.
-    const opts = this.app.config.elasticsearch;
-    console.log('opts----:',opts)
-    assert(opts.node || opts.nodes, '[egg-elasticsearch-ts] Missing node(s) option');
+    let opts = this.app.config.elasticsearch;
+    
+    assert(typeof opts === 'object', '[egg-elasticsearch-ts] Config must is Object!');
 
-    const client = new elasticsearch.Client(opts);
+    if(!Array.isArray(opts)){
+      Object.assign(opts, { elasticsearchName: 'default', elasticsearchDefault: true })
+      opts = [opts];
+    }
 
-    Object.assign(this.app, { elasticsearch: client });
+    const elasticsearchs = {};
+    let elasticsearchSingle;
+    for (const opt of opts) {
+      assert(typeof opt === 'object', `[egg-elasticsearch-ts] Config ‘${opt}’ must is Object!`);
+      const {elasticsearchName, elasticsearchDefault, node , nodes } = opt;
+      assert(elasticsearchName, '[egg-elasticsearch-ts] Property ‘elasticsearchName’ is required!');
+      assert(node || nodes, '[egg-elasticsearch-ts] Missing node(s) option');
+
+      const client = new elasticsearch.Client(opt);
+      Object.assign(client, { elasticsearchName, elasticsearchDefault })
+      if(!elasticsearchSingle && elasticsearchDefault){
+        elasticsearchSingle = client;
+      }
+
+      elasticsearchs[elasticsearchName] = client;
+    }
+
+    Object.assign(this.app, { elasticsearchs, elasticsearch: elasticsearchSingle });
+
   }
 
   async didLoad() {
